@@ -2,5 +2,5 @@
 include_once('../../classes/Artist.php');
 
 $artist = new Artist();
-$artist = $artist->getArtists();
-var_dump($artist);
+$res = $artist->getArtists();
+print json_encode($res);

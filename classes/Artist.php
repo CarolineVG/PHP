@@ -12,6 +12,7 @@ class Artist extends Database {
      * @return array
      */
     public function getArtists(): array{
+        $res = array();
         $query = $this->connection()->prepare("SELECT * FROM artist");
         $query->execute();
 
@@ -23,8 +24,9 @@ class Artist extends Database {
                     'artist_id' => htmlspecialchars($result["artist_id"]),
                     'name'=> htmlspecialchars($result["name"])
                 );
-                return $arr;
+                array_push($res, $arr);
             }
+            return $res; 
         }
     }
 
