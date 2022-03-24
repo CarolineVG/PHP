@@ -71,7 +71,22 @@ class Album extends Database {
         }
     }
 
+    // no return
+    public function addNewAlbum(){
+        $title = $this->getTitle();
+        $price = $this->getPrice();
+        $btw = $this->getBtw();
+        $artist_id = $this->getArtistId();
 
+        $query = $this->connection()->prepare("INSERT INTO album(title, price, btw, artist_id) 
+                                VALUES (:title, :price, :btw, :artist_id)");
+        $query->bindParam(':title', $title);
+        $query->bindParam(':price', $price);
+        $query->bindParam(':btw', $btw);
+        $query->bindParam(':artist_id', $artist_id);
+
+        $query->execute();
+    }
 
 
 
