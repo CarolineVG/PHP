@@ -79,6 +79,18 @@ class Artist extends Database {
     }
 
 
+    // no return
+    public function deleteArtist()
+    {
+        $artistId = $this->getArtistId();
+        $query = $this->connection()->prepare("DELETE FROM artist WHERE artist_id=:artist_id");
+        $query->bindParam(':artist_id', $artistId);
+        $query->execute();
+    }
+
+
+
+
     /* GETTERS AND SETTERS */
 
     /**
